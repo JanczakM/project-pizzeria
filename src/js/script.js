@@ -296,7 +296,7 @@
       });
       thisWidget.linkIncrease.addEventListener('click', function(event){
         event.preventDefault();
-        thisWidget.setValue(thisWidget.value + 1);
+        thisWidget.setValue(parseInt(thisWidget.value) + 1);
       });
     }
 
@@ -345,6 +345,7 @@
       thisCart.dom.productList.addEventListener('updated', function(){
         thisCart.update();
       });
+
     }
 
     add(menuProduct){
@@ -411,7 +412,7 @@
     initAmountWidget(){
       const thisCartProduct = this;
       thisCartProduct.amountWidget = new AmountWidget(thisCartProduct.dom.amountWidget);
-      thisCartProduct.dom.amountWidget.addEventListener('click', function(){
+      thisCartProduct.dom.amountWidget.addEventListener('updated', function(){
         thisCartProduct.amount = thisCartProduct.amountWidget.value;
         thisCartProduct.price = thisCartProduct.amount * thisCartProduct.priceSingle;
         thisCartProduct.dom.price.innerHTML = thisCartProduct.price;
