@@ -45,7 +45,7 @@ export class AmountWidget{
     });
     thisWidget.linkDecrease.addEventListener('click', function(event){
       event.preventDefault();
-      thisWidget.setValue(thisWidget.value - 1);
+      thisWidget.setValue(parseInt(thisWidget.value) - 1);
     });
     thisWidget.linkIncrease.addEventListener('click', function(event){
       event.preventDefault();
