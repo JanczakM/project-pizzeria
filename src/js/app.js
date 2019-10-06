@@ -1,8 +1,42 @@
 import {Product} from './components/product.js';
 import {Cart} from './components/cart.js';
-import {select, settings} from './settings.js';
+import {select, settings, classNames} from './settings.js';
 
 const app = {
+  activatePage: function(pageId){
+    const thisApp = this;
+
+    for(let link of thisApp.navLinks){
+      link.classList.toggle(classNames.nav.active, link.getAttribute('href') == '#' + pageId);
+    }
+
+    for(let page of thisApp.pages){
+      page.classList.toggle(classNames.pages.active, page.id == pageId);
+    }
+  },
+
+  initPages: function(){
+    const thisApp = this;
+
+    thisApp.pages = Array.from(document.querySelector(select.containerOf.pages).children);
+    thisApp.navLinks = Array.from(document.querySelectorAll(select.nav.links));
+
+    thisApp.activatePage(thisApp.pages[0].id);
+
+    for(let link of thisApp.navLinks){
+      link.addEventListener('click', function(event){
+        const clickedElement = this;
+
+        event.preventDefault();
+
+        const pageHrefId = clickedElement.getAttribute('href');
+        const pageIdText = pageHrefId.replace('#', '');
+
+        thisApp.activatePage(pageIdText);
+      });
+    }
+  },
+
   initMenu: function(){
     const thisApp = this;
     for(let productData in thisApp.data.products){
@@ -45,7 +79,7 @@ const app = {
     console.log('classNames:', classNames);
     console.log('settings:', settings);
     console.log('templates:', templates); */
-
+    thisApp.initPages();
     thisApp.initData();
     thisApp.initCart();
   },
