@@ -69,7 +69,7 @@ export class Cart{
 
     for(let productInstance of thisCart.products){
       thisCart.subtotalPrice += productInstance.price;
-      thisCart.totalNumber += productInstance.amount;
+      thisCart.totalNumber += parseInt(productInstance.amount);
     }
 
     if(thisCart.subtotalPrice == 0){
