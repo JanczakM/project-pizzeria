@@ -38,7 +38,11 @@ export class DatePicker extends BaseWidget{
   }
 
   parseValue(newValue){
-    return newValue;
+    const day = newValue[0].getDate();
+    const month = newValue[0].getMonth() + 1;
+    const year = newValue[0].getFullYear();
+    const fullDate = year + '-' + month + '-' + day;
+    return fullDate;
   }
 
   isValid(){
