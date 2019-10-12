@@ -10,6 +10,8 @@ export class Booking{
     thisBooking.render(bookingContainer);
     thisBooking.initWidgets();
     thisBooking.getData();
+    thisBooking.chooseTable();
+    thisBooking.formSubmit();
   }
 
   render(bookingContainer){
@@ -19,11 +21,17 @@ export class Booking{
     thisBooking.dom = {};
     thisBooking.dom.wrapper = bookingContainer;
     thisBooking.dom.wrapper.innerHTML = generatedHTML;
-    thisBooking.dom.peopleAmount = thisBooking.dom.wrapper.querySelector(select.booking.peopleAmount);
-    thisBooking.dom.hoursAmount = thisBooking.dom.wrapper.querySelector(select.booking.hoursAmount);
+    thisBooking.dom.container = thisBooking.dom.wrapper.querySelector(select.containerOf.bookingForm);
+    thisBooking.dom.form = thisBooking.dom.wrapper.querySelector(select.booking.form);
+    thisBooking.dom.tables = thisBooking.dom.wrapper.querySelectorAll(select.booking.tables);
     thisBooking.dom.datePicker = thisBooking.dom.wrapper.querySelector(select.widgets.datePicker.wrapper);
     thisBooking.dom.hourPicker = thisBooking.dom.wrapper.querySelector(select.widgets.hourPicker.wrapper);
-    thisBooking.dom.tables = thisBooking.dom.wrapper.querySelectorAll(select.booking.tables);
+    thisBooking.dom.peopleAmount = thisBooking.dom.wrapper.querySelector(select.booking.peopleAmount);
+    thisBooking.dom.hoursAmount = thisBooking.dom.wrapper.querySelector(select.booking.hoursAmount);
+    thisBooking.dom.phone = thisBooking.dom.wrapper.querySelector(select.booking.phone);
+    thisBooking.dom.address = thisBooking.dom.wrapper.querySelector(select.booking.address);
+    thisBooking.dom.starters = thisBooking.dom.wrapper.querySelectorAll(select.booking.starters);
+    thisBooking.dom.confirmation = thisBooking.dom.wrapper.querySelector(select.booking.confirmation);
   }
 
   initWidgets(){
@@ -136,5 +144,88 @@ export class Booking{
         table.classList.remove(classNames.booking.tableBooked);
       }
     }
+  }
+
+  chooseTable(){
+    const thisBooking = this;
+
+    for(let table of thisBooking.dom.tables){
+      table.addEventListener('click', function(){
+
+        if(!table.classList.contains(classNames.booking.tableBooked)){
+
+          for(let table of thisBooking.dom.tables){
+            if(table != this){
+              table.classList.remove(classNames.booking.tableChosen);
+            }
+          }
+
+          table.classList.toggle(classNames.booking.tableChosen);
+        }
+
+        if(table.classList.contains(classNames.booking.tableChosen)){
+          thisBooking.chosenTableId = parseInt(table.getAttribute(settings.booking.tableIdAttribute));
+        }
+      });
+    }
+
+    thisBooking.dom.wrapper.addEventListener('updated', function(event){
+      if(event.detail == thisBooking.hourPicker || event.detail == thisBooking.datePicker){
+        for(let table of thisBooking.dom.tables){
+          table.classList.remove(classNames.booking.tableChosen);
+        }
+      }
+
+    });
+  }
+
+  formSubmit(){
+    const thisBooking = this;
+
+    thisBooking.dom.form.addEventListener('submit', function(event){
+      event.preventDefault();
+      thisBooking.sendBooking();
+      thisBooking.dom.container.classList.add(classNames.booking.hidden);
+      thisBooking.dom.confirmation.classList.add(classNames.booking.wrapperActive);
+    });
+  }
+
+  sendBooking(){
+    const thisBooking = this;
+
+    const url = settings.db.url + '/' + settings.db.booking;
+
+    thisBooking.starters = [];
+
+    for(let starter of thisBooking.dom.starters){
+      if(starter.checked){
+        thisBooking.starters.push(starter.value);
+      }
+    }
+
+    const payload = {
+      date: thisBooking.datePicker.value,
+      hour: thisBooking.hourPicker.value,
+      table: thisBooking.chosenTableId,
+      duration: thisBooking.hoursAmount.value,
+      ppl: thisBooking.peopleAmount.value,
+      starters: thisBooking.starters,
+      phone: thisBooking.dom.phone.value,
+      address: thisBooking.dom.address.value,
+    };
+
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload),
+    };
+
+    fetch(url, options)
+      .then(response => response.json())
+      .then(parsedResponse => {
+        console.log(parsedResponse);
+      });
   }
 }

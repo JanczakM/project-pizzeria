@@ -173,6 +173,10 @@
       }
 
     }
+
+    &.chosen {
+      background-color: $color-success;
+    }
   }
 
   [data-table="1"] {
@@ -197,4 +201,17 @@
 .booking-options {
   @include flex(row, flex-start, space-between);
   margin: ($base-size * 4) auto;
+}
+
+.confirmation {
+  display: none;
+}
+
+.hide {
+  display: none;
+}
+
+.confirmation-active {
+  color: $color-success;
+  display: block;
 }

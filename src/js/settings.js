@@ -11,6 +11,7 @@ export const select = {
     cart: '#cart',
     pages: '#pages',
     booking: '.booking-wrapper',
+    bookingForm: '.booking-widget',
   },
   all: {
     menuProducts: '#product-list > .product',
@@ -63,6 +64,11 @@ export const select = {
     peopleAmount: '.people-amount',
     hoursAmount: '.hours-amount',
     tables: '.floor-plan .table',
+    form: '.booking-form',
+    phone: '[name="phone"]',
+    address: '[name="address"]',
+    starters: '[name="starter"]',
+    confirmation: '.confirmation',
   },
   nav: {
     links: '.main-nav a',
@@ -80,6 +86,9 @@ export const classNames = {
   booking: {
     loading: 'loading',
     tableBooked: 'booked',
+    tableChosen: 'chosen',
+    hidden: 'hide',
+    wrapperActive: 'confirmation-active',
   },
   nav: {
     active: 'active',

@@ -17,7 +17,8 @@ export class BaseWidget{
     const thisWidget = this;
 
     const event = new CustomEvent('updated', {
-      bubbles: true
+      bubbles: true,
+      detail: thisWidget
     });
 
     thisWidget.dom.wrapper.dispatchEvent(event);
