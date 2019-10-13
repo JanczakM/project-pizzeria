@@ -82,3 +82,65 @@
   bottom: 0px;
   transform: translate(50%, 30%);
 }
+
+.rectangle-image {
+  width: 193px;
+  height: 193px;
+  border-radius: $radius;
+  object-fit: cover;
+}
+
+.carousel {
+  overflow: hidden;
+  margin-top: 100px;
+  position: relative;
+  height: 193px;
+
+  &__container {
+    display: flex;
+    position: absolute;
+    background-color: $color-light;
+    transition: all 0.5s ease-in-out;
+
+    &-description {
+      padding-left: 35px;
+      width: 412px;
+    }
+  }
+}
+
+.carousel-nav {
+  display: flex;
+  justify-content: center;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+  margin: 35px 7px;
+}
+
+.dot-light {
+  background-color: $color-additional;
+}
+.dot-dark {
+  background-color: $color-dark;
+}
+
+.carousel-title {
+  font-weight: $font-bold;
+}
+
+.carousel-caption {
+  font-style: italic;
+  margin-top: 30px;
+}
+
+.carousel-position-left {
+  transform: translateX(-100%);
+}
+
+.carousel-position-invisible {
+  visibility: hidden;
+}

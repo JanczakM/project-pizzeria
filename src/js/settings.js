@@ -73,6 +73,10 @@ export const select = {
   nav: {
     links: '.main-nav a',
   },
+  slides: {
+    slide: '.carousel__container',
+    dot: '.dot',
+  },
 };
 
 export const classNames = {
@@ -95,6 +99,12 @@ export const classNames = {
   },
   pages: {
     active: 'active',
+  },
+  slides: {
+    left: 'carousel-position-left',
+    invisible: 'carousel-position-invisible',
+    dotLight: 'dot-light',
+    dotDark: 'dot-dark',
   },
 };
 

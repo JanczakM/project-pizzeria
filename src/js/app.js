@@ -92,6 +92,43 @@ const app = {
     });
   },
 
+  initCarousel: function(){
+    let myIndex = 0;
+    carousel();
+
+    function carousel() {
+      const slides = document.querySelectorAll(select.slides.slide);
+      const dots = document.querySelectorAll(select.slides.dot);
+
+      for (let i = 0; i < slides.length; i++) {
+        slides[i].classList.add(classNames.slides.invisible);
+      }
+
+      for (let i = 0; i < dots.length; i++) {
+        dots[i].classList.remove(classNames.slides.dotDark);
+        dots[i].classList.add(classNames.slides.dotLight);
+      }
+
+      myIndex++;
+
+      if (myIndex > slides.length){
+        myIndex = 1;
+      }
+
+      slides[myIndex-1].classList.remove(classNames.slides.invisible);
+
+      if (myIndex > dots.length){
+        myIndex = 1;
+      }
+
+      dots[myIndex-1].classList.replace(classNames.slides.dotLight, classNames.slides.dotDark);
+
+
+      setTimeout(carousel, 3000);
+    }
+
+  },
+
   init: function(){
     const thisApp = this;
     /* console.log('*** App starting ***');
@@ -103,6 +140,7 @@ const app = {
     thisApp.initData();
     thisApp.initCart();
     thisApp.initBooking();
+    thisApp.initCarousel();
   },
 };
 
