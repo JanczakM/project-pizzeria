@@ -100,7 +100,7 @@
     display: flex;
     position: absolute;
     background-color: $color-light;
-    transition: all 0.5s ease;
+    transition: transform 1s ease;
 
     &-description {
       padding-left: 35px;

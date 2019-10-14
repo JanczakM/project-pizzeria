@@ -93,36 +93,26 @@ const app = {
   },
 
   initCarousel: function(){
-    let myIndex = 0;
+    const slides = document.querySelectorAll(select.slideshow.slide);
+    const dots = document.querySelectorAll(select.slideshow.dot);
+    const slidesArray = Array.from(slides);
+    const dotsArray = Array.from(dots);
     carousel();
 
     function carousel() {
-      const slides = document.querySelectorAll(select.slideshow.slide);
-      const dots = document.querySelectorAll(select.slideshow.dot);
 
-      for (let i = 0; i < slides.length; i++) {
-        slides[i].classList.add(classNames.slideshow.invisible);
-      }
+      slidesArray[0].classList.add(classNames.slideshow.invisible);
+      dotsArray[0].classList.remove(classNames.slideshow.dotDark);
+      dotsArray[1].classList.add(classNames.slideshow.dotDark);
+      slidesArray[1].classList.remove(classNames.slideshow.right);
+      slidesArray[0].classList.add(classNames.slideshow.right);
+      slidesArray[0].classList.remove(classNames.slideshow.invisible);
 
-      for (let i = 0; i < dots.length; i++) {
-        dots[i].classList.remove(classNames.slideshow.dotDark);
-        dots[i].classList.add(classNames.slideshow.dotLight);
-      }
+      const movingSlide = slidesArray.shift();
+      slidesArray.push(movingSlide);
 
-      myIndex++;
-
-      if (myIndex > slides.length){
-        myIndex = 1;
-      }
-
-      slides[myIndex-1].classList.remove(classNames.slideshow.invisible);
-
-      if (myIndex > dots.length){
-        myIndex = 1;
-      }
-
-      dots[myIndex-1].classList.replace(classNames.slideshow.dotLight, classNames.slideshow.dotDark);
-
+      const movingDot = dotsArray.shift();
+      dotsArray.push(movingDot);
 
       setTimeout(carousel, 3000);
     }
