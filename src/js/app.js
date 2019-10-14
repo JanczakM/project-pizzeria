@@ -97,16 +97,16 @@ const app = {
     carousel();
 
     function carousel() {
-      const slides = document.querySelectorAll(select.slides.slide);
-      const dots = document.querySelectorAll(select.slides.dot);
+      const slides = document.querySelectorAll(select.slideshow.slide);
+      const dots = document.querySelectorAll(select.slideshow.dot);
 
       for (let i = 0; i < slides.length; i++) {
-        slides[i].classList.add(classNames.slides.invisible);
+        slides[i].classList.add(classNames.slideshow.invisible);
       }
 
       for (let i = 0; i < dots.length; i++) {
-        dots[i].classList.remove(classNames.slides.dotDark);
-        dots[i].classList.add(classNames.slides.dotLight);
+        dots[i].classList.remove(classNames.slideshow.dotDark);
+        dots[i].classList.add(classNames.slideshow.dotLight);
       }
 
       myIndex++;
@@ -115,13 +115,13 @@ const app = {
         myIndex = 1;
       }
 
-      slides[myIndex-1].classList.remove(classNames.slides.invisible);
+      slides[myIndex-1].classList.remove(classNames.slideshow.invisible);
 
       if (myIndex > dots.length){
         myIndex = 1;
       }
 
-      dots[myIndex-1].classList.replace(classNames.slides.dotLight, classNames.slides.dotDark);
+      dots[myIndex-1].classList.replace(classNames.slideshow.dotLight, classNames.slideshow.dotDark);
 
 
       setTimeout(carousel, 3000);

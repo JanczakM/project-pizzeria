@@ -100,7 +100,7 @@
     display: flex;
     position: absolute;
     background-color: $color-light;
-    transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease;
 
     &-description {
       padding-left: 35px;
@@ -124,6 +124,7 @@
 .dot-light {
   background-color: $color-additional;
 }
+
 .dot-dark {
   background-color: $color-dark;
 }
@@ -141,6 +142,11 @@
   transform: translateX(-100%);
 }
 
+.carousel-position-right {
+  transform: translateX(100%);
+}
+
 .carousel-position-invisible {
-  visibility: hidden;
+  opacity: 0;
+  z-index: -90;
 }
