@@ -101,12 +101,18 @@ const app = {
 
     function carousel() {
 
-      slidesArray[0].classList.add(classNames.slideshow.invisible);
+      const lastSlide = slidesArray.length - 1;
+
+      if(slidesArray[lastSlide].classList.contains(classNames.slideshow.left)){
+        slidesArray[lastSlide].classList.remove(classNames.slideshow.left);
+        slidesArray[lastSlide].classList.add(classNames.slideshow.right);
+      }
+
+      slidesArray[0].classList.add(classNames.slideshow.left);
+      slidesArray[1].classList.remove(classNames.slideshow.right);
       dotsArray[0].classList.remove(classNames.slideshow.dotDark);
       dotsArray[1].classList.add(classNames.slideshow.dotDark);
-      slidesArray[1].classList.remove(classNames.slideshow.right);
-      slidesArray[0].classList.add(classNames.slideshow.right);
-      slidesArray[0].classList.remove(classNames.slideshow.invisible);
+
 
       const movingSlide = slidesArray.shift();
       slidesArray.push(movingSlide);

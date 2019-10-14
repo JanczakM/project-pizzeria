@@ -101,6 +101,7 @@
     position: absolute;
     background-color: $color-light;
     transition: transform 1s ease;
+    z-index: 1;
 
     &-description {
       padding-left: 35px;
@@ -144,9 +145,5 @@
 
 .carousel-position-right {
   transform: translateX(100%);
-}
-
-.carousel-position-invisible {
-  opacity: 0;
   z-index: -90;
 }

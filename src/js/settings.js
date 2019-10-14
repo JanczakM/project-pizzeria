@@ -104,7 +104,6 @@ export const classNames = {
   slideshow: {
     left: 'carousel-position-left',
     right: 'carousel-position-right',
-    invisible: 'carousel-position-invisible',
     dotLight: 'dot-light',
     dotDark: 'dot-dark',
   },
