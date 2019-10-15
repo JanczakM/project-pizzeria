@@ -15,6 +15,10 @@
   h2 {
     text-transform: uppercase;
     transition: transform 0.3s ease-in-out;
+    font-size: 26px;
+    letter-spacing: -1px;
+    word-spacing: 2px;
+    font-weight: $font-bold;
   }
 
   p {
@@ -28,7 +32,7 @@
   }
 
   &-element {
-    margin-bottom: 2px;
+    margin-bottom: 5px;
     width: 299px;
     position: relative;
     color: $color-light;
@@ -92,7 +96,7 @@
 
 .carousel {
   overflow: hidden;
-  margin-top: 100px;
+  margin-top: 101px;
   position: relative;
   height: 193px;
 
@@ -104,8 +108,9 @@
     z-index: 1;
 
     &-description {
-      padding-left: 35px;
+      padding-left: 40px;
       width: 412px;
+      padding-top: 5px;
     }
   }
 }
@@ -119,7 +124,7 @@
   width: 10px;
   height: 10px;
   border-radius: 100%;
-  margin: 35px 7px;
+  margin: 37px 8px;
 }
 
 .dot-light {
@@ -134,9 +139,14 @@
   font-weight: $font-bold;
 }
 
+.carousel-text {
+  line-height: 23px;
+}
+
 .carousel-caption {
   font-style: italic;
-  margin-top: 30px;
+  margin-top: 25px;
+  line-height: 23px;
 }
 
 .carousel-position-left {
@@ -146,4 +156,72 @@
 .carousel-position-right {
   transform: translateX(100%);
   z-index: -90;
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 25px 0;
+  margin-top: 15px;
+
+  &__link {
+    color: $color-main;
+    margin-top: 19px;
+  }
+
+  &__box {
+    position: relative;
+    margin-top: 5px;
+
+    &-image {
+      opacity: 1;
+      transition: .5s ease;
+    }
+
+    &-layer {
+      transition: .6s ease;
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 193px;
+      height: 193px;
+      border-radius: $radius;
+      background: black;
+    }
+
+    &-icons {
+      transition: .6s ease;
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 193px;
+      height: 193px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+
+      .fas {
+        font-size: 16px;
+        color: $color-light;
+        margin: 5px;
+        cursor: pointer;
+
+        &:hover {
+          color: $color-main;
+        }
+      }
+    }
+  }
+
+  &__box:hover .gallery__box-layer {
+    opacity: 0.5;
+  }
+
+  &__box:hover .gallery__box-icons {
+    opacity: 1;
+  }
 }
