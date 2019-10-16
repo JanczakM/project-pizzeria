@@ -52,7 +52,12 @@ utils.convertDataSourceToDbJson = function(){
 };
 
 utils.numberToHour = function(number){
-  return (Math.floor(number) % 24) + ':' + (number % 1 * 60 + '').padStart(2, '0');
+  if(number < 24){
+    return (Math.floor(number) % 24) + ':' + (number % 1 * 60 + '').padStart(2, '0');
+  }
+  else {
+    return '24:00';
+  }
 };
 
 utils.hourToNumber = function(hour){

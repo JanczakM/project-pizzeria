@@ -85,6 +85,7 @@ export class Booking{
     }
 
     thisBooking.updateDOM();
+    thisBooking.setBackground();
 
   }
 
@@ -175,7 +176,9 @@ export class Booking{
           table.classList.remove(classNames.booking.tableChosen);
         }
       }
-
+      if(event.detail == thisBooking.datePicker){
+        thisBooking.setBackground();
+      }
     });
   }
 
@@ -227,5 +230,62 @@ export class Booking{
       .then(parsedResponse => {
         console.log(parsedResponse);
       });
+  }
+
+  setBackground(){
+    const thisBooking = this;
+
+    thisBooking.dom.hourPickerBcg = thisBooking.dom.form.querySelector(select.widgets.hourPicker.background);
+
+    const open = settings.hours.open;
+    const close = settings.hours.close;
+    const hours = [];
+
+    for(let i = open; i < close + 0.5; i = i + 0.5){
+      hours.push(i);
+    }
+
+    const tablesAmount = [];
+
+    for(let hour of hours){
+      if(thisBooking.booked[thisBooking.date][hour]){
+        tablesAmount.push(thisBooking.booked[thisBooking.date][hour].length);
+      }
+      else {
+        tablesAmount.push(0);
+      }
+    }
+
+    const colors = [];
+
+
+    for(let amount of tablesAmount){
+      if (amount == 3){
+        colors.push('red');
+      }
+      if (amount == 2){
+        colors.push('orange');
+      }
+      if (amount < 2) {
+        colors.push('green');
+      }
+    }
+
+    let scale = Math.round(100 / colors.length);
+    let scale2 = Math.round(100 / colors.length);
+    let scaleZero = 0;
+
+    const styleRule = [];
+
+    for(let color of colors){
+      styleRule.push(color + ' ' + scaleZero + '% ' + scale + '%');
+      scaleZero = scaleZero + scale2;
+      scale = scale + scale2;
+    }
+
+    const style = styleRule.join(', ');
+
+    thisBooking.dom.hourPickerBcg.style.backgroundImage = 'linear-gradient(90deg,' + style + ')';
+
   }
 }
