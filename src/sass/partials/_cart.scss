@@ -11,6 +11,11 @@
   box-shadow: 0 0 $base-size rgba(0, 0, 0, 0.2);
   z-index: 9999;
 
+  @media (max-width: 800px) {
+    position: static;
+    margin-top: 25px;
+  }
+
   &.active {
     .cart__content {
       @include accordion-open();

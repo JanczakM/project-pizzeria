@@ -27,6 +27,10 @@
     top: $base-size;
     font-size: ($base-size * 1.5);
     transition: $transition;
+
+    @media (max-width: 800px) {
+      display: none;
+    }
   }
 
   &__base-price {

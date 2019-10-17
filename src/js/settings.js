@@ -72,7 +72,7 @@ export const select = {
     confirmation: '.confirmation',
   },
   nav: {
-    links: '.main-nav a',
+    links: '.main-nav a, .home-links',
   },
   slideshow: {
     wrapper: '.slideshow',

@@ -29,6 +29,10 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+
+    @media (max-width: 800px) {
+      flex-direction: column;
+    }
   }
 
   &-element {
@@ -36,6 +40,10 @@
     width: 299px;
     position: relative;
     color: $color-light;
+
+    @media (max-width: 800px) {
+      width: 100%;
+    }
 
     p {
       visibility: hidden;
@@ -92,6 +100,16 @@
   height: 193px;
   border-radius: $radius;
   object-fit: cover;
+
+  @media (max-width: 800px) {
+    width: 100%;
+  }
+}
+
+.slideshow {
+  @media (max-width: 800px) {
+    display: none;
+  }
 }
 
 .carousel {
@@ -165,6 +183,21 @@
   padding: 25px 0;
   margin-top: 15px;
 
+  @media (max-width: 800px) {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  h2 {
+    display: none;
+
+    @media (max-width: 800px) {
+      display: block;
+      text-align: center;
+      font-family: $font-header;
+    }
+  }
+
   &__link {
     color: $color-main;
     margin-top: 19px;
@@ -173,6 +206,10 @@
   &__box {
     position: relative;
     margin-top: 5px;
+
+    @media (max-width: 800px) {
+      width: 100%;
+    }
 
     &-image {
       opacity: 1;
