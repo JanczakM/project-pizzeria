@@ -28,7 +28,7 @@
     font-size: ($base-size * 1.5);
     transition: $transition;
 
-    @media (max-width: 800px) {
+    @media (max-width: 700px) {
       display: none;
     }
   }
@@ -46,6 +46,11 @@
     @include flex(row, center, space-between);
     @include accordion-closed();
     animation: flipdown 0.5s ease both;
+
+    @media (max-width: 700px) {
+      display: flex;
+      flex-direction: column-reverse;
+    }
   }
 
   &__params {
@@ -63,6 +68,11 @@
     width: calc(100% - 400px);
     opacity: 0;
     transition: opacity 200ms;
+
+    @media (max-width: 700px) {
+      width: 100%;
+      text-align: left;
+    }
   }
 
   &__total-price {
@@ -77,6 +87,10 @@
     height: 350px;
     opacity: 0;
     transition: opacity 200ms;
+
+    @media (max-width: 700px) {
+      display: none;
+    }
 
     &.small {
       width: 220px;

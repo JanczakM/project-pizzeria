@@ -30,7 +30,7 @@
     flex-direction: row;
     justify-content: space-between;
 
-    @media (max-width: 800px) {
+    @media (max-width: 700px) {
       flex-direction: column;
     }
   }
@@ -41,7 +41,7 @@
     position: relative;
     color: $color-light;
 
-    @media (max-width: 800px) {
+    @media (max-width: 700px) {
       width: 100%;
     }
 
@@ -101,13 +101,13 @@
   border-radius: $radius;
   object-fit: cover;
 
-  @media (max-width: 800px) {
+  @media (max-width: 700px) {
     width: 100%;
   }
 }
 
 .slideshow {
-  @media (max-width: 800px) {
+  @media (max-width: 700px) {
     display: none;
   }
 }
@@ -183,7 +183,7 @@
   padding: 25px 0;
   margin-top: 15px;
 
-  @media (max-width: 800px) {
+  @media (max-width: 700px) {
     flex-direction: column;
     align-items: center;
   }
@@ -191,7 +191,7 @@
   h2 {
     display: none;
 
-    @media (max-width: 800px) {
+    @media (max-width: 700px) {
       display: block;
       text-align: center;
       font-family: $font-header;
@@ -207,7 +207,7 @@
     position: relative;
     margin-top: 5px;
 
-    @media (max-width: 800px) {
+    @media (max-width: 700px) {
       width: 100%;
     }
 

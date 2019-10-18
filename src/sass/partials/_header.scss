@@ -6,7 +6,7 @@
   &__wrapper {
     position: relative;
 
-    @media (max-width: 800px) {
+    @media (max-width: 700px) {
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -46,7 +46,7 @@
   @include flex(row, flex-start, flex-start);
   bottom: ($base-size * -8);
 
-  @media (max-width: 800px) {
+  @media (max-width: 700px) {
     justify-content: center;
   }
 
@@ -61,7 +61,7 @@
     border-top-left-radius: $radius;
     border-top-right-radius: $radius;
 
-    @media (max-width: 800px) {
+    @media (max-width: 700px) {
       margin: 0 5px;
     }
 

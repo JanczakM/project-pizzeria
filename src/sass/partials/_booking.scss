@@ -44,11 +44,28 @@
 .time-picker {
   @include flex(row, flex-start, space-between);
   margin: 0 0 ($base-size * 4) 0;
+
+  @media (max-width: 700px) {
+    flex-direction: column;
+  }
+
+}
+
+.flatpickr-input {
+
+  @media (max-width: 700px) {
+    margin-bottom: 20px;
+  }
+
 }
 
 .hour-picker {
   position: relative;
   width: 50%;
+
+  @media (max-width: 700px) {
+    width: 100%;
+  }
 
   .output {
     position: absolute;
@@ -106,6 +123,11 @@
   background-size: ($base-size * 3);
   background-repeat: repeat;
 
+  @media (max-width: 700px) {
+    width: 250px;
+    height: 250px;
+  }
+
   > * {
     position: absolute;
     text-align: center;
@@ -137,6 +159,13 @@
     width: 100px;
     height: 50px;
     line-height: 50px;
+
+    @media (max-width: 700px) {
+      bottom: 30px;
+      width: 90px;
+      height: 40px;
+      line-height: 40px;
+    }
   }
 
   .table {
@@ -147,6 +176,12 @@
     transform: rotate(45deg);
     transform-origin: 50% 50%;
     cursor: pointer;
+
+    @media (max-width: 700px) {
+      width: 60px;
+      height: 60px;
+      line-height: 60px;
+    }
 
     &--round {
       border-radius: 50%;
@@ -182,6 +217,11 @@
   [data-table="1"] {
     left: 40px;
     top: 40px;
+
+    @media (max-width: 700px) {
+      left: 30px;
+      top: 30px;
+    }
   }
 
   [data-table="2"] {
@@ -190,17 +230,36 @@
     width: 100px;
     height: 100px;
     line-height: 100px;
+
+    @media (max-width: 700px) {
+      right: 15px;
+      top: 15px;
+      width: 80px;
+      height: 80px;
+      line-height: 80px;
+    }
+
   }
 
   [data-table="3"] {
     right: 40px;
     top: 180px;
+
+    @media (max-width: 700px) {
+      right: 20px;
+      top: 130px;
+    }
+
   }
 }
 
 .booking-options {
   @include flex(row, flex-start, space-between);
   margin: ($base-size * 4) auto;
+
+  @media (max-width: 700px) {
+    flex-direction: column;
+  }
 }
 
 .confirmation {
@@ -218,4 +277,21 @@
 
 .rangeSlider__fill {
   background-color: transparent;
+}
+
+.order-confirmation {
+
+  @media (max-width: 700px) {
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+  }
+
+  input {
+
+    @media (max-width: 700px) {
+      margin-bottom: 10px;
+    }
+
+  }
 }
